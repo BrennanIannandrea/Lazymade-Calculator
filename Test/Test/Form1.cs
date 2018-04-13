@@ -72,15 +72,16 @@ namespace Test
                                 }
                             }
                             int disfir = mid - findfir;
-                            int dislas = mid - findlas;
+                            int dislas = findlas - mid;
                             string before = a.Substring(findfir, disfir);
                             string after = a.Substring(mid + 1, dislas);
                             double.TryParse(before, out double bef);
                             double.TryParse(after, out double aft);
                             double con = bef / aft;
                             int dis = findlas - findfir;
-                            a.Remove(findfir, dis);
-                            a.Insert(findfir, con.ToString());
+                            a = a.Remove(findfir, dis + 1);
+                            a = a.Insert(findfir, con.ToString());
+                            textBox1.Text = a;
                         }
                         else
                         {
@@ -113,15 +114,16 @@ namespace Test
                                 }
                             }
                             int disfir = mid - findfir;
-                            int dislas = mid - findlas;
+                            int dislas = findlas - mid;
                             string before = a.Substring(findfir, disfir);
                             string after = a.Substring(mid + 1, dislas);
                             double.TryParse(before, out double bef);
                             double.TryParse(after, out double aft);
-                            double con = bef * aft;
+                            double con = bef / aft;
                             int dis = findlas - findfir;
-                            a.Remove(findfir, dis);
-                            a.Insert(findfir, con.ToString());
+                            a = a.Remove(findfir, dis + 1);
+                            a = a.Insert(findfir, con.ToString());
+                            textBox1.Text = a;
                         }
                     }else if(a.IndexOf("/") != -1 && a.IndexOf("*") == -1)
                     {
@@ -168,8 +170,9 @@ namespace Test
                         double.TryParse(after, out double aft);
                         double con = bef / aft;
                         int dis = findlas - findfir;
-                        a.Remove(findfir, dis);
-                        a.Insert(findfir, con.ToString());
+                        a = a.Remove(findfir, dis+1);
+                        a = a.Insert(findfir, con.ToString());
+                        textBox1.Text = a;
                     }
                     else if (a.IndexOf("*") != -1 && a.IndexOf("/") == -1)
                     {
@@ -202,15 +205,16 @@ namespace Test
                             }
                         }
                         int disfir = mid - findfir;
-                        int dislas = mid - findlas;
+                        int dislas = findlas - mid;
                         string before = a.Substring(findfir, disfir);
                         string after = a.Substring(mid + 1, dislas);
                         double.TryParse(before, out double bef);
                         double.TryParse(after, out double aft);
-                        double con = bef * aft;
+                        double con = bef / aft;
                         int dis = findlas - findfir;
-                        a.Remove(findfir, dis);
-                        a.Insert(findfir, con.ToString());
+                        a = a.Remove(findfir, dis + 1);
+                        a = a.Insert(findfir, con.ToString());
+                        textBox1.Text = a;
                     }
                 }
             }
