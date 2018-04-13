@@ -74,6 +74,10 @@ namespace Test
                                         checklas = true;
                                     }
                                 }
+                                else
+                                {
+                                    checklas = true;
+                                }
                             }
                             int disfir = mid - findfir;
                             int dislas = findlas - mid;
@@ -118,6 +122,10 @@ namespace Test
                                     {
                                         checklas = true;
                                     }
+                                }
+                                else
+                                {
+                                    checklas = true;
                                 }
                             }
                             int disfir = mid - findfir;
@@ -214,6 +222,10 @@ namespace Test
                                     checklas = true;
                                 }
                             }
+                            else
+                            {
+                                checklas = true;
+                            }
                         }
                         int disfir = mid - findfir;
                         int dislas = findlas - mid;
@@ -264,6 +276,10 @@ namespace Test
                                         checklas = true;
                                     }
                                 }
+                                else
+                                {
+                                    checklas = true;
+                                }
                             }
                             int disfir = mid - findfir;
                             int dislas = findlas - mid;
@@ -308,6 +324,10 @@ namespace Test
                                     {
                                         checklas = true;
                                     }
+                                }
+                                else
+                                {
+                                    checklas = true;
                                 }
                             }
                             int disfir = mid - findfir;
@@ -404,6 +424,10 @@ namespace Test
                                 {
                                     checklas = true;
                                 }
+                            }
+                            else
+                            {
+                                checklas = true;
                             }
                         }
                         int disfir = mid - findfir;
