@@ -22,6 +22,7 @@ namespace Test
         {
             bool checkWholebox = true;
             string a = textBox1.Text;
+            if (ValidCheck(a)) { 
             foreach (char element in a)
             {
                 if (checkWholebox)
@@ -83,14 +84,21 @@ namespace Test
                             int dislas = findlas - mid;
                             string before = a.Substring(findfir, disfir);
                             string after = a.Substring(mid + 1, dislas);
-                            double.TryParse(before, out double bef);
-                            double.TryParse(after, out double aft);
-                            double con = bef / aft;
+                            bool x = double.TryParse(before, out double bef);
+                            bool y = double.TryParse(after, out double aft);
+                            if (y == true && x == true)
+                            {
+                                double con = bef / aft;
                             int dis = findlas - findfir;
                             a = a.Remove(findfir, dis + 1);
                             a = a.Insert(findfir, con.ToString());
                             textBox1.Text = a;
                         }
+                        else
+                        {
+                            textBox1.Text = "Invalid number found";
+                        }
+                    }
                         else
                         {
                             int mid = a.IndexOf("*");
@@ -132,14 +140,21 @@ namespace Test
                             int dislas = findlas - mid;
                             string before = a.Substring(findfir, disfir);
                             string after = a.Substring(mid + 1, dislas);
-                            double.TryParse(before, out double bef);
-                            double.TryParse(after, out double aft);
-                            double con = bef / aft;
+                            bool x = double.TryParse(before, out double bef);
+                            bool y = double.TryParse(after, out double aft);
+                            if (y == true && x == true)
+                            {
+                                double con = bef * aft;
                             int dis = findlas - findfir;
                             a = a.Remove(findfir, dis + 1);
                             a = a.Insert(findfir, con.ToString());
                             textBox1.Text = a;
                         }
+                            else
+                            {
+                            textBox1.Text = "Invalid number found";
+                        }
+                    }
                     }
                     else if (a.IndexOf("/") != -1 && a.IndexOf("*") == -1)
                     {
@@ -182,14 +197,21 @@ namespace Test
                         int dislas = findlas - mid;
                         string before = a.Substring(findfir, disfir);
                         string after = a.Substring(mid + 1, dislas);
-                        double.TryParse(before, out double bef);
-                        double.TryParse(after, out double aft);
-                        double con = bef / aft;
+                        bool x = double.TryParse(before, out double bef);
+                        bool y = double.TryParse(after, out double aft);
+                        if (y == true && x == true)
+                        {
+                            double con = bef / aft;
                         int dis = findlas - findfir;
                         a = a.Remove(findfir, dis + 1);
                         a = a.Insert(findfir, con.ToString());
                         textBox1.Text = a;
                     }
+                    else
+                    {
+                        textBox1.Text = "Invalid number found";
+                    }
+                }
                     else if (a.IndexOf("*") != -1 && a.IndexOf("/") == -1)
                     {
                         int mid = a.IndexOf("*");
@@ -231,20 +253,140 @@ namespace Test
                         int dislas = findlas - mid;
                         string before = a.Substring(findfir, disfir);
                         string after = a.Substring(mid + 1, dislas);
-                        double.TryParse(before, out double bef);
-                        double.TryParse(after, out double aft);
-                        double con = bef / aft;
+                        bool x = double.TryParse(before, out double bef);
+                        bool y = double.TryParse(after, out double aft);
+                        if (y == true && x == true)
+                        {
+                            double con = bef * aft;
                         int dis = findlas - findfir;
                         a = a.Remove(findfir, dis + 1);
                         a = a.Insert(findfir, con.ToString());
                         textBox1.Text = a;
                     }
-                }
-                while (a.IndexOf("+") != -1 || a.IndexOf("-") != -1)
-                {
-                    if (a.IndexOf("+") != -1 && a.IndexOf("-") != -1)
+                    else
                     {
-                        if (a.IndexOf("+") < a.IndexOf("-"))
+                        textBox1.Text = "Invalid number found";
+                    }
+                }
+                }
+                    while (a.IndexOf("+") != -1 || a.IndexOf("-") != -1)
+                    {
+                        if (a.IndexOf("+") != -1 && a.IndexOf("-") != -1)
+                        {
+                            if (a.IndexOf("+") < a.IndexOf("-"))
+                            {
+                                int mid = a.IndexOf("+");
+                                bool checkfir = false;
+                                int findfir = mid;
+                                while (checkfir == false)
+                                {
+                                    if (findfir != 0)
+                                    {
+                                        findfir--;
+                                        if (!IsNumeric(a[findfir]) && a[findfir].ToString() != ("."))
+                                        {
+                                            checkfir = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        checkfir = true;
+                                    }
+                                }
+                                bool checklas = false;
+                                int findlas = mid;
+                                while (checklas == false)
+                                {
+                                    if (findlas < a.Length - 1)
+                                    {
+                                        findlas++;
+                                        if (!IsNumeric(a[findlas]) && a[findlas].ToString() != ("."))
+                                        {
+                                            checklas = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        checklas = true;
+                                    }
+                                }
+                                int disfir = mid - findfir;
+                                int dislas = findlas - mid;
+                                string before = a.Substring(findfir, disfir);
+                                string after = a.Substring(mid + 1, dislas);
+                                bool x = double.TryParse(before, out double bef);
+                                bool y = double.TryParse(after, out double aft);
+                                if (y == true && x == true)
+                                {
+                                    double con = bef + aft;
+                                    int dis = findlas - findfir;
+                                    a = a.Remove(findfir, dis + 1);
+                                    a = a.Insert(findfir, con.ToString());
+                                    textBox1.Text = a;
+                                }
+                                else
+                                {
+                                    textBox1.Text = "Invalid number found";
+                                }
+                            }
+                            else
+                            {
+                                int mid = a.IndexOf("-");
+                                bool checkfir = false;
+                                int findfir = mid;
+                                while (checkfir == false)
+                                {
+                                    if (findfir != 0)
+                                    {
+                                        findfir--;
+                                        if (!IsNumeric(a[findfir]) && a[findfir].ToString() != ("."))
+                                        {
+                                            checkfir = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        checkfir = true;
+                                    }
+                                }
+                                bool checklas = false;
+                                int findlas = mid;
+                                while (checklas == false)
+                                {
+                                    if (findlas < a.Length - 1)
+                                    {
+                                        findlas++;
+                                        if (!IsNumeric(a[findlas]) && a[findlas].ToString() != ("."))
+                                        {
+                                            checklas = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        checklas = true;
+                                    }
+                                }
+                                int disfir = mid - findfir;
+                                int dislas = findlas - mid;
+                                string before = a.Substring(findfir, disfir);
+                                string after = a.Substring(mid + 1, dislas);
+                                bool x = double.TryParse(before, out double bef);
+                                bool y = double.TryParse(after, out double aft);
+                                if (y == true && x == true)
+                                {
+                                    double con = bef - aft;
+                                    int dis = findlas - findfir;
+                                    a = a.Remove(findfir, dis + 1);
+                                    a = a.Insert(findfir, con.ToString());
+                                    textBox1.Text = a;
+                                }
+                                else
+                                {
+                                    textBox1.Text = "Invalid number found";
+                                }
+                            }
+                        }
+                        else if (a.IndexOf("+") != -1 && a.IndexOf("-") == -1)
                         {
                             int mid = a.IndexOf("+");
                             bool checkfir = false;
@@ -276,6 +418,7 @@ namespace Test
                                         checklas = true;
                                     }
                                 }
+
                                 else
                                 {
                                     checklas = true;
@@ -285,15 +428,22 @@ namespace Test
                             int dislas = findlas - mid;
                             string before = a.Substring(findfir, disfir);
                             string after = a.Substring(mid + 1, dislas);
-                            double.TryParse(before, out double bef);
-                            double.TryParse(after, out double aft);
-                            double con = bef + aft;
-                            int dis = findlas - findfir;
-                            a = a.Remove(findfir, dis + 1);
-                            a = a.Insert(findfir, con.ToString());
-                            textBox1.Text = a;
+                            bool x = double.TryParse(before, out double bef);
+                            bool y = double.TryParse(after, out double aft);
+                            if (y == true && x == true)
+                            {
+                                double con = bef + aft;
+                                int dis = findlas - findfir;
+                                a = a.Remove(findfir, dis + 1);
+                                a = a.Insert(findfir, con.ToString());
+                                textBox1.Text = a;
+                            }
+                            else
+                            {
+                                textBox1.Text = "Invalid number found";
+                            }
                         }
-                        else
+                        else if (a.IndexOf("-") != -1 && a.IndexOf("+") == -1)
                         {
                             int mid = a.IndexOf("-");
                             bool checkfir = false;
@@ -334,115 +484,27 @@ namespace Test
                             int dislas = findlas - mid;
                             string before = a.Substring(findfir, disfir);
                             string after = a.Substring(mid + 1, dislas);
-                            double.TryParse(before, out double bef);
-                            double.TryParse(after, out double aft);
-                            double con = bef - aft;
-                            int dis = findlas - findfir;
-                            a = a.Remove(findfir, dis + 1);
-                            a = a.Insert(findfir, con.ToString());
-                            textBox1.Text = a;
-                        }
-                    }
-                    else if (a.IndexOf("+") != -1 && a.IndexOf("-") == -1)
-                    {
-                        int mid = a.IndexOf("+");
-                        bool checkfir = false;
-                        int findfir = mid;
-                        while (checkfir == false)
-                        {
-                            if (findfir != 0)
+                            bool x = double.TryParse(before, out double bef);
+                            bool y = double.TryParse(after, out double aft);
+                            if (y == true && x == true)
                             {
-                                findfir--;
-                                if (!IsNumeric(a[findfir]) && a[findfir].ToString() != ("."))
-                                {
-                                    checkfir = true;
-                                }
+                                double con = bef - aft;
+                                int dis = findlas - findfir;
+                                a = a.Remove(findfir, dis + 1);
+                                a = a.Insert(findfir, con.ToString());
+                                textBox1.Text = a;
                             }
                             else
                             {
-                                checkfir = true;
+                                textBox1.Text = "Invalid number found";
                             }
                         }
-                        bool checklas = false;
-                        int findlas = mid;
-                        while (checklas == false)
-                        {
-                        if (findlas < a.Length - 1)
-                            {
-                                    findlas++;
-                                    if (!IsNumeric(a[findlas]) && a[findlas].ToString() != ("."))
-                                    {
-                                        checklas = true;
-                                    }
-                                }
-                            
-                            else
-                            {
-                                checklas = true;
-                            }
-                        }
-                        int disfir = mid - findfir;
-                        int dislas = findlas - mid;
-                        string before = a.Substring(findfir, disfir);
-                        string after = a.Substring(mid + 1, dislas);
-                        double.TryParse(before, out double bef);
-                        double.TryParse(after, out double aft);
-                        double con = bef + aft;
-                        int dis = findlas - findfir;
-                        a = a.Remove(findfir, dis + 1);
-                        a = a.Insert(findfir, con.ToString());
-                        textBox1.Text = a;
-                    }
-                    else if (a.IndexOf("-") != -1 && a.IndexOf("+") == -1)
-                    {
-                        int mid = a.IndexOf("-");
-                        bool checkfir = false;
-                        int findfir = mid;
-                        while (checkfir == false)
-                        {
-                            if (findfir != 0)
-                            {
-                                findfir--;
-                                if (!IsNumeric(a[findfir]) && a[findfir].ToString() != ("."))
-                                {
-                                    checkfir = true;
-                                }
-                            }
-                            else
-                            {
-                                checkfir = true;
-                            }
-                        }
-                        bool checklas = false;
-                        int findlas = mid;
-                        while (checklas == false)
-                        {
-                            if (findlas < a.Length - 1)
-                            {
-                                findlas++;
-                                if (!IsNumeric(a[findlas]) && a[findlas].ToString() != ("."))
-                                {
-                                    checklas = true;
-                                }
-                            }
-                            else
-                            {
-                                checklas = true;
-                            }
-                        }
-                        int disfir = mid - findfir;
-                        int dislas = findlas - mid;
-                        string before = a.Substring(findfir, disfir);
-                        string after = a.Substring(mid + 1, dislas);
-                        double.TryParse(before, out double bef);
-                        double.TryParse(after, out double aft);
-                        double con = bef - aft;
-                        int dis = findlas - findfir;
-                        a = a.Remove(findfir, dis + 1);
-                        a = a.Insert(findfir, con.ToString());
-                        textBox1.Text = a;
                     }
                 }
+            }
+            else
+            {
+                textBox1.Text = "Invalid input";
             }
         }
         private bool IsNumeric(string a)
@@ -459,9 +521,23 @@ namespace Test
         {
 
         }
-        /*private bool ValidCheck(string a)
+        private bool ValidCheck(string a)
         {
-
-        }*/
+            for (int i = 0; i < a.Length;i++)
+            {
+               if (a[i].ToString() == "." || a[i].ToString() == "/" || a[i].ToString() == "*" || a[i].ToString() == "+" || a[i].ToString() == "-")
+                {
+                    if (a[i-1].ToString() == "." || a[i-1].ToString() == "/" || a[i-1].ToString() == "*" || a[i-1].ToString() == "+" || a[i-1].ToString() == "-")
+                    {
+                        return false;
+                    }
+                    if (a[i+1].ToString() == "." || a[i+1].ToString() == "/" || a[i+1].ToString() == "*" || a[i+1].ToString() == "+" || a[i+1].ToString() == "-")
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }
