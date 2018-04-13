@@ -1,0 +1,10 @@
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\obj\Debug\Test.Form1.resources
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\obj\Debug\Test.Properties.Resources.resources
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\obj\Debug\Test.csproj.GenerateResource.Cache
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\bin\Debug\Test.exe.config
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\bin\Debug\Test.exe
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\bin\Debug\Test.pdb
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\obj\Debug\Test.exe
+C:\Users\bubleye\Documents\GitHub\Git_Learn\Test\Test\obj\Debug\Test.pdb

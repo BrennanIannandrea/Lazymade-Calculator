@@ -20,19 +20,26 @@ namespace Test
 
         private void calculate(object sender, EventArgs e)
         {
-            bool checkWholebox;
+            bool checkWholebox = true;
             string a = textBox1.Text;
-            foreach(char element in a)
+            foreach (char element in a)
             {
-                if (!IsNumeric(element)|| element.ToString() !="/" || element.ToString() != "*" || element.ToString() != "." || element.ToString() != "+" || element.ToString() != "-")
+                if (checkWholebox)
                 {
-                    checkWholebox = false;
+                    if (IsNumeric(element) || element.ToString() == "/" || element.ToString() == "*" || element.ToString() == "." || element.ToString() == "+" || element.ToString() == "-")
+                    {
+                        checkWholebox = true;
+                    }
+                    else
+                    {
+                        checkWholebox = false;
+                    }
                 }
             }
-            if (checkWholebox = false){
+            if (checkWholebox == true){
                 while (a.IndexOf("/") != -1 || a.IndexOf("*") != -1)
                 {
-                if (a.IndexOf("/") != 1 && a.IndexOf("*") == -1)
+                if (a.IndexOf("/") != -1 && a.IndexOf("*") != -1)
                     {
                         if (a.IndexOf("/") < a.IndexOf("*"))
                         {
@@ -41,15 +48,22 @@ namespace Test
                             int findfir = mid;
                             while (checkfir == false)
                             {
-                                findfir--;
-                                if (!IsNumeric(a[findfir]) && a[findfir].ToString() != ("."))
+                                if (findfir != 0)
+                                {
+                                    findfir--;
+                                    if (!IsNumeric(a[findfir]) && a[findfir].ToString() != ("."))
+                                    {
+                                        checkfir = true;
+                                    }
+                                }
+                                else
                                 {
                                     checkfir = true;
                                 }
                             }
                             bool checklas = false;
                             int findlas = mid;
-                            while (checkfir == false)
+                            while (checklas == false)
                             {
                                 findlas++;
                                 if (!IsNumeric(a[findlas]) && a[findlas].ToString() != ("."))
@@ -57,13 +71,146 @@ namespace Test
                                     checklas = true;
                                 }
                             }
-
+                            int disfir = mid - findfir;
+                            int dislas = mid - findlas;
+                            string before = a.Substring(findfir, disfir);
+                            string after = a.Substring(mid + 1, dislas);
+                            double.TryParse(before, out double bef);
+                            double.TryParse(after, out double aft);
+                            double con = bef / aft;
+                            int dis = findlas - findfir;
+                            a.Remove(findfir, dis);
+                            a.Insert(findfir, con.ToString());
                         }
                         else
                         {
                             int mid = a.IndexOf("*");
-
+                            bool checkfir = false;
+                            int findfir = mid;
+                            while (checkfir == false)
+                            {
+                                if (findfir != 0)
+                                {
+                                    findfir--;
+                                    if (!IsNumeric(a[findfir]) && a[findfir].ToString() != ("."))
+                                    {
+                                        checkfir = true;
+                                    }
+                                }
+                                else
+                                {
+                                    checkfir = true;
+                                }
+                            }
+                            bool checklas = false;
+                            int findlas = mid;
+                            while (checklas == false)
+                            {
+                                findlas++;
+                                if (!IsNumeric(a[findlas]) && a[findlas].ToString() != ("."))
+                                {
+                                    checklas = true;
+                                }
+                            }
+                            int disfir = mid - findfir;
+                            int dislas = mid - findlas;
+                            string before = a.Substring(findfir, disfir);
+                            string after = a.Substring(mid + 1, dislas);
+                            double.TryParse(before, out double bef);
+                            double.TryParse(after, out double aft);
+                            double con = bef * aft;
+                            int dis = findlas - findfir;
+                            a.Remove(findfir, dis);
+                            a.Insert(findfir, con.ToString());
                         }
+                    }else if(a.IndexOf("/") != -1 && a.IndexOf("*") == -1)
+                    {
+                        int mid = a.IndexOf("/");
+                        bool checkfir = false;
+                        int findfir = mid;
+                        while (checkfir == false)
+                        {
+                            if (findfir != 0)
+                            {
+                                findfir--;
+                                if (!IsNumeric(a[findfir]) && a[findfir].ToString() != ("."))
+                                {
+                                    checkfir = true;
+                                }
+                            }
+                            else
+                            {
+                                checkfir = true;
+                            }
+                        }
+                        bool checklas = false;
+                        int findlas = mid;
+                        while (checklas == false)
+                        {
+                            if (findlas < a.Length-1)
+                            {
+                                findlas++;
+                                if (!IsNumeric(a[findlas]) && a[findlas].ToString() != ("."))
+                                {
+                                    checklas = true;
+                                }
+                            }
+                            else
+                            {
+                                checklas = true;
+                            }
+                        }
+                        int disfir = mid - findfir;
+                        int dislas = findlas - mid;
+                        string before = a.Substring(findfir, disfir);
+                        string after = a.Substring(mid + 1, dislas);
+                        double.TryParse(before, out double bef);
+                        double.TryParse(after, out double aft);
+                        double con = bef / aft;
+                        int dis = findlas - findfir;
+                        a.Remove(findfir, dis);
+                        a.Insert(findfir, con.ToString());
+                    }
+                    else if (a.IndexOf("*") != -1 && a.IndexOf("/") == -1)
+                    {
+                        int mid = a.IndexOf("*");
+                        bool checkfir = false;
+                        int findfir = mid;
+                        while (checkfir == false)
+                        {
+                            if (findfir != 0)
+                            {
+                                findfir--;
+                                if (!IsNumeric(a[findfir]) && a[findfir].ToString() != ("."))
+                                {
+                                    checkfir = true;
+                                }
+                            }
+                            else
+                            {
+                                checkfir = true;
+                            }
+                        }
+                        bool checklas = false;
+                        int findlas = mid;
+                        while (checklas == false)
+                        {
+                            findlas++;
+                            if (!IsNumeric(a[findlas]) && a[findlas].ToString() != ("."))
+                            {
+                                checklas = true;
+                            }
+                        }
+                        int disfir = mid - findfir;
+                        int dislas = mid - findlas;
+                        string before = a.Substring(findfir, disfir);
+                        string after = a.Substring(mid + 1, dislas);
+                        double.TryParse(before, out double bef);
+                        double.TryParse(after, out double aft);
+                        double con = bef * aft;
+                        int dis = findlas - findfir;
+                        a.Remove(findfir, dis);
+                        a.Insert(findfir, con.ToString());
                     }
                 }
             }
@@ -77,9 +224,14 @@ namespace Test
             string b = a.ToString();
             return int.TryParse(b, out int bla);
         }
-        private bool ValidCheck(string a)
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+        /*private bool ValidCheck(string a)
+        {
+
+        }*/
     }
 }
