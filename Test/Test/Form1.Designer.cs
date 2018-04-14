@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Calculator_I_guess = new System.Windows.Forms.Label();
+            this.Calculator = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // Calculator_I_guess
+            // Calculator
             // 
-            this.Calculator_I_guess.AutoSize = true;
-            this.Calculator_I_guess.Location = new System.Drawing.Point(12, 9);
-            this.Calculator_I_guess.Name = "Calculator_I_guess";
-            this.Calculator_I_guess.Size = new System.Drawing.Size(91, 13);
-            this.Calculator_I_guess.TabIndex = 0;
-            this.Calculator_I_guess.Text = "Calculator I guess";
+            this.Calculator.AutoSize = true;
+            this.Calculator.Location = new System.Drawing.Point(-2, -4);
+            this.Calculator.Name = "Calculator";
+            this.Calculator.Size = new System.Drawing.Size(54, 13);
+            this.Calculator.TabIndex = 0;
+            this.Calculator.Text = "Calculator";
+            this.Calculator.Click += new System.EventHandler(this.Calculator_I_guess_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 25);
+            this.textBox1.Location = new System.Drawing.Point(58, -4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(309, 20);
+            this.textBox1.Size = new System.Drawing.Size(50, 20);
             this.textBox1.TabIndex = 1;
             this.textBox1.Click += new System.EventHandler(this.calculate);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -55,9 +56,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 66);
+            this.ClientSize = new System.Drawing.Size(120, 12);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.Calculator_I_guess);
+            this.Controls.Add(this.Calculator);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -67,7 +68,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label Calculator_I_guess;
+        private System.Windows.Forms.Label Calculator;
         private System.Windows.Forms.TextBox textBox1;
     }
 }
